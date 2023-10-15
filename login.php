@@ -8,7 +8,7 @@ $contrasenia = $_POST['contrasenia'];
 $validar = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo='$correo' AND contrasenia ='$contrasenia'");
 
 if (mysqli_num_rows($validar) > 0) {
-    header("location: home.html");
+    header("location: ./views/usuarios/index.php");
     exit;
 } else {
     echo '
