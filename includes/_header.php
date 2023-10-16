@@ -15,6 +15,13 @@
     
 
     <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+
+    <style>
+        #cerrarSesion {
+            cursor: pointer;
+        }
+    </style>
+    
 </head>
 <body>
     
@@ -30,7 +37,8 @@
 <li class="nav-item active">
     <a class="nav-link" href="index.php">
         <i class="material-icons-outlined"></i>
-        <span></span></a>
+        <img src="http://localhost/PROYECTOANALISISII/images/1.png" alt="Descripción de la imagen" width="150px" height="150px">
+
 </li>
 <hr class="sidebar-divider">
 <div class="sidebar-heading">
@@ -57,6 +65,13 @@
     </a>
 </li>
 
+<li class="nav-item">
+    <a class="nav-link collapsed" href="clientes.php">
+        <span class="material-icons">category</span>
+        <span>  Clientes</span>
+    </a>
+</li>
+
 <hr class="sidebar-divider">
 <div class="sidebar-heading">
     PERFIL
@@ -68,11 +83,20 @@
     </a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="../../includes/_sesion/cerrarSesion.php">
+    <a class="nav-link" id="cerrarSesion">
     <span class="material-icons">logout</span>
         <span>Salir</span></a>
         
 </li>
+<script>
+        const cerrarSesionBtn = document.getElementById('cerrarSesion');
+
+        cerrarSesionBtn.addEventListener('click', function() {
+            // Agrega aquí el código para cerrar la sesión del usuario, como redireccionar a una página de inicio de sesión.
+            alert('Sesión cerrada'); // Esto es un ejemplo; reemplázalo con tu lógica de cierre de sesión real.
+            window.location.href = '../../index.html';
+        });
+    </script>
 
 <hr class="sidebar-divider d-none d-md-block">
 
@@ -87,18 +111,13 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                <span class="material-icons">search</span>
-                                </button>
-                            </div>
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group" style="text-align: center;">
+                  
                         </div>
                     </form>
+
+
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -112,6 +131,7 @@
                             </a>
                         </li>
                     </ul>
+
                 </nav>
 
 

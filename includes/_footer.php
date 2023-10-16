@@ -1,4 +1,4 @@
-<footer class="text-center text-lg-start text-muted" style="background-color: #113946;">
+<footer class="text-center text-lg-start text-muted" style="background-color: #113946">
   <section
     class="d-flex justify-content-center justify-content-lg-between p-4  border-bottom">
 
@@ -22,11 +22,11 @@
         </a>
     </div>
   </section>
-    <div class="container text-center text-md-start mt- bg-dark">
+    <div class="container text-center text-md-start mt- bg-dark" style="color:white">
       <div class="row mt-3">
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>¡Conocenos!
+            <i class="fas fa-gem me-3" style="color:white"></i>¡Conocenos!
           </h6>
           <p>
           Donde la tecnología se encuentra con la innovación. ¡Potenciamos tu mundo digital!
