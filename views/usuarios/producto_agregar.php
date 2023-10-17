@@ -1,3 +1,21 @@
+<?php
+$conexion = mysqli_connect("localhost", "root", "", "bdElectrotech");
+
+if (!$conexion) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
+
+$query = "SELECT id, nombre_categoria FROM tbcategorias";
+$result = mysqli_query($conexion, $query);
+
+if (!$result) {
+    die("Error al ejecutar la consulta: " . mysqli_error($conexion));
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="es-MX">
 <?php require '../../includes/_header.php' ?>
