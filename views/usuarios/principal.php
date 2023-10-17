@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php require '../../includes/_header.php'; ?>
 <head>
     <meta charset="UTF-8">
     <title>Cotizador de Productos</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<?php require '../../includes/_header.php'; ?>
 <body>
-    <h1>Cotizador de Productos</h1>
 
-    <!-- Formulario de Datos del Cliente -->
-    <form action="generar_cotizacion.php" method="post">
-        <h2>Buscar Cliente</h2>
-        <div class="form-group">
-            <label for="busquedaCliente">Buscar Cliente por nombre, empresa o correo:</label>
-            <input type="text" class="form-control" id="busquedaCliente" name="searchText" placeholder="Ejemplo: Juan, ABC Company, correo@ejemplo.com">
-        </div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#clienteModal">Buscar Cliente</button>
+    <div class="container mt-5">
+        <h1 class="text-center">Cotizador de Productos</h1>
 
-        <div class="form-group">
-            <label for="nombre">Representante:</label>
-            <input type="text" class="form-control" name="nombre" id="clienteNombre" required>
-        </div>
+        <!-- Formulario de Datos del Cliente -->
+        <form action="generar_cotizacion.php" method="post">
+            <h2>Buscar Cliente</h2>
+            <div class="form-group">
+                <label for="busquedaCliente">Buscar Cliente por nombre, empresa o correo:</label>
+                <input type="text" class="form-control" id="busquedaCliente" name="searchText" placeholder="Ejemplo: Juan, ABC Company, correo@ejemplo.com">
+            </div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#clienteModal">Buscar Cliente</button>
 
-        <div class="form-group">
-            <label for="empresa">Empresa:</label>
-            <input type="text" class="form-control" name="empresa" id="clienteEmpresa" required>
-        </div>
+            <div class="form-group">
+                <label for="nombre">Representante:</label>
+                <input type="text" class="form-control" name="nombre" id="clienteNombre" required>
+            </div>
 
-        <div class="form-group">
-            <label for "correo">Correo Electrónico:</label>
-            <input type="email" class="form-control" name="correo" id="clienteCorreo" required>
-        </div>
-    </form>
+            <div class="form-group">
+                <label for="empresa">Empresa:</label>
+                <input type="text" class="form-control" name="empresa" id="clienteEmpresa" required>
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" class="form-control" name="correo" id="clienteCorreo" required>
+            </div>
+        </form>
+    </div>
 
     <!-- Ventana modal para buscar y seleccionar al cliente -->
     <div class="modal fade" id="clienteModal" tabindex="-1" role="dialog" aria-labelledby="clienteModalLabel" aria-hidden="true">
@@ -76,6 +77,8 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../../js/clientesearch.js"></script>
     <script>
         // Manejar la selección del cliente
@@ -97,6 +100,6 @@
             $("#clienteModal").modal('hide');
         });
     </script>
+<?php require '../../includes/_footer.php'; ?>
 </body>
-<?php require '../../includes/_footer.php' ?>
 </html>

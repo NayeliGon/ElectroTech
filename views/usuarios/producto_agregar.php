@@ -5,7 +5,7 @@ if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 
-$query = "SELECT id, nombre_categoria FROM tbcategorias";
+$query = "SELECT id, categoria FROM tbcategoria";
 $result = mysqli_query($conexion, $query);
 
 if (!$result) {
@@ -65,24 +65,17 @@ if (!$result) {
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="mb-3">
-                        <label for="categorias" class="form-label">Categorías *</label>
-                        <select name="categorias" id="categorias" class="form-control" required>
-                            <option value="electronico">Electrónico</option>
-                            <option value="cocina">Cocina</option>
-                            <option value="farmaceutico">Farmacéutico</option>
-                            <option value="mascotas">Mascotas</option>
-                            <option value="jugueteria">Juguetería</option>
-                            <option value="automovilistico">Automovilístico</option>
-                            <option value="vestimenta">Vestimenta</option>
-                            <option value="telefonia">Telefonía</option>
-                            <option value="deportes">Deportes</option>
-                        </select>
-                    </div>
-                </div>
+            <div class="mb-3">
+                <label for="categorias" class="form-label">Categorías *</label>
+                <select name="categorias" id="categorias" class="form-control" required>
+                    <?php
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<option value="' . $row['id'] . '">' . $row['categoria'] . '</option>';
+                    }
+                    ?>
+                </select>
             </div>
+
             <div class="mb-3">
                 <div class="row">
                     <div class="col-sm-12">

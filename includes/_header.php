@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Base de datos</title>
+    <title>PRINCIPAL</title>
+    <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
 
-    <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+   
 
     <style>
         #cerrarSesion {
@@ -27,13 +28,13 @@
     
 <div id="wrapper">
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+    <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar" >
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php" >
     <div class="sidebar-brand-icon rotate-n-15">
     </div>
     <div class="sidebar-brand-text mx-3">ElectroTech</div>
 </a>
-<hr class="sidebar-divider my-0">
+<hr class="sidebar-divider my-0" >
 <li class="nav-item active">
     <a class="nav-link" href="index.php">
         <i class="material-icons-outlined"></i>
