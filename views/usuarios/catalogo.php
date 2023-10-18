@@ -29,7 +29,7 @@ if (!empty($selectedCategoria)) {
 $resultado_productos = mysqli_query($conexion, $consulta_productos);
 
 // Paginación
-$productos_por_pagina = 6;
+$productos_por_pagina = 4;
 $total_productos = mysqli_num_rows($resultado_productos);
 $total_paginas = ceil($total_productos / $productos_por_pagina);
 

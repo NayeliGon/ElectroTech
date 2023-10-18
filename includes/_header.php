@@ -77,12 +77,7 @@
 <div class="sidebar-heading">
     PERFIL
 </div>
-<li class="nav-item">
-    <a class="nav-link collapsed" href="usuariosindex.php">
-        <span class="material-icons">people</span>
-        <span>Información usuario</span>
-    </a>
-</li>
+
 <li class="nav-item">
     <a class="nav-link" id="cerrarSesion">
     <span class="material-icons">logout</span>

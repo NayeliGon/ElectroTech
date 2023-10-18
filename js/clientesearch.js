@@ -14,6 +14,8 @@ $(document).ready(function() {
             $("#clienteNombre").val(selectedCliente.representante);
             $("#clienteEmpresa").val(selectedCliente.empresa);
             $("#clienteCorreo").val(selectedCliente.correo);
+            $("#clienteTelefono").val(selectedClientetelefono);
+            
         }
         // Cerrar la ventana modal
         $("#clienteModal").modal('hide');
@@ -39,6 +41,7 @@ $(document).ready(function() {
                         "<td>" + row.representante + "</td>" +
                         "<td>" + row.empresa + "</td>" +
                         "<td>" + row.correo + "</td>" +
+                        "<td>" + row.telefono + "</td>" +
                         "</tr>"
                     );
                 }

@@ -5,20 +5,32 @@
     <meta charset="UTF-8">
     <title>Cotizador de Productos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
 
     <div class="container mt-5">
         <h1 class="text-center">Cotizador de Productos</h1>
 
-        <!-- Formulario de Datos del Cliente -->
-        <form action="generar_cotizacion.php" method="post">
-            <h2>Buscar Cliente</h2>
-            <div class="form-group">
-                <label for="busquedaCliente">Buscar Cliente por nombre, empresa o correo:</label>
-                <input type="text" class="form-control" id="busquedaCliente" name="searchText" placeholder="Ejemplo: Juan, ABC Company, correo@ejemplo.com">
+        <div class="container">
+    <form action="generar_cotizacion.php" method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Datos Cliente</h2>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#clienteModal"><i class="fas fa-search"></i>Buscar Cliente</button>
+                
             </div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#clienteModal">Buscar Cliente</button>
+            <div class="col-md-6 text-right">
+                <a href="seleccionarproductos.php" class="btn btn-primary">
+                    <i class="fas fa-arrow-right"></i> Siguiente
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
 
             <div class="form-group">
                 <label for="nombre">Representante:</label>
@@ -33,6 +45,11 @@
             <div class="form-group">
                 <label for="correo">Correo Electrónico:</label>
                 <input type="email" class="form-control" name="correo" id="clienteCorreo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Teléfono:</label>
+                <input type="telefono" class="form-control" name="telefono" id="clienteTelefono" required>
             </div>
         </form>
     </div>
@@ -63,6 +80,7 @@
                                 <th>Representante</th>
                                 <th>Empresa</th>
                                 <th>Correo</th>
+                                <th>Teléfono</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,11 +108,13 @@
             var representante = selectedClienteRow.find("td:eq(1)").text();
             var empresa = selectedClienteRow.find("td:eq(2)").text();
             var correo = selectedClienteRow.find("td:eq(3)").text();
-            
+            var telefono= selectedClienteRow.find("td:eq(4)").text();
+
             // Llenar los campos de datos del cliente en el formulario principal
             $("#clienteNombre").val(representante);
             $("#clienteEmpresa").val(empresa);
             $("#clienteCorreo").val(correo);
+            $("#clienteTelefono").val(telefono);
             
             // Cerrar la ventana modal
             $("#clienteModal").modal('hide');
