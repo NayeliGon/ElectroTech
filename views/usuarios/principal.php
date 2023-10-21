@@ -23,7 +23,7 @@
                 
             </div>
             <div class="col-md-6 text-right">
-                <a href="seleccionarproductos.php" class="btn btn-primary">
+                <a href="sproductos.php" class="btn btn-primary">
                     <i class="fas fa-arrow-right"></i> Siguiente
                 </a>
             </div>

@@ -1,34 +1,37 @@
 <?php
+// Conexión a la base de datos
 $conexion = mysqli_connect("localhost", "root", "", "bdElectrotech");
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $searchText = $_POST["searchText"];
-
-    // Realiza la búsqueda de productos en la base de datos y obtén los resultados
-    // Utiliza sentencias preparadas para evitar inyección de SQL
-    $sql = "SELECT * FROM productos WHERE nombre LIKE ? OR descripcion LIKE ?";
-    
-    $stmt = mysqli_prepare($conexion, $sql);
-    
-    if ($stmt) {
-        // Agrega comodines % al valor de búsqueda para que coincida parcialmente
-        $searchText = "%" . $searchText . "%";
-        
-        mysqli_stmt_bind_param($stmt, "ss", $searchText, $searchText);
-        
-        if (mysqli_stmt_execute($stmt)) {
-            $result = mysqli_stmt_get_result($stmt);
-            $productos = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-            // Devuelve los resultados como JSON
-            echo json_encode($productos);
-        } else {
-            // Manejo de errores
-            echo json_encode([]);
-        }
-    } else {
-        // Manejo de errores
-        echo json_encode([]);
-    }
+if (!$conexion) {
+    die("Error en la conexión a la base de datos: " . mysqli_connect_error());
 }
+
+// Recibir el texto de búsqueda desde el formulario
+if (isset($_POST['searchText'])) {
+    $searchText = mysqli_real_escape_string($conexion, $_POST['searchText']);
+
+    // Realizar la consulta para buscar productos en la tabla 'productos'
+    $query = "SELECT nombre, descripcion, precio FROM productos WHERE 
+        nombre LIKE '%$searchText%' OR descripcion LIKE '%$searchText%'";
+
+    $result = mysqli_query($conexion, $query);
+    
+    if ($result) {
+        $productos = array();
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $productos[] = $row;
+        }
+
+        // Devolver los resultados como JSON
+        echo json_encode($productos);
+    } else {
+        echo "Error en la consulta: " . mysqli_error($conexion);
+    }
+} else {
+    echo "No se proporcionó texto de búsqueda.";
+}
+
+// Cerrar la conexión a la base de datos
+mysqli_close($conexion);
 ?>
