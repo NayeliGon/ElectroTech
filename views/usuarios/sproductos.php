@@ -98,7 +98,7 @@
             <h3>Productos Seleccionados:</h3>
             <ul id="productosCotizados">
             </ul>
-            <p>Despedida: [Agrega aquí tu despedida]</p>
+            <p>Quedamos a su disposición para cualquier consulta adicional. Agradecemos su interés y esperamos poder atenderle en un futuro cercano. ¡Estamos a la espera de su confirmación!</p>
 
             <!-- Botones para descargar en PDF y enviar por correo -->
            
