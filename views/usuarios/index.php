@@ -93,7 +93,7 @@ $inicio = ($pagina_actual - 1) * $productos_por_pagina;
                                                 echo '<td>' . $row['nombre'] . '</td>';
                                                 echo '<td>' . $row['descripcion'] . '</td>';
                                                 echo '<td>' . $row['color'] . '</td>';
-                                                echo '<td>$' . $row['precio'] . '</td>';
+                                                echo '<td>Q' . $row['precio'] . '</td>';
                                                 echo '<td class="' . $clase . '">' . $row['cantidad'] . '</td>';
                                                 echo '<td>' . $row['cantidad_min'] . '</td>';
                                                 echo '<td>' . $row['categorias'] . '</td>';

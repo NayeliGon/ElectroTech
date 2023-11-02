@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var clienteSeleccionado = null; // Variable global para almacenar el cliente seleccionado
+
     // Manejar la búsqueda del cliente
     $("#buscarCliente").click(function() {
         var searchText = $("#clienteBusqueda").val();
@@ -10,12 +12,12 @@ $(document).ready(function() {
         // Obtener los datos del cliente seleccionado desde la tabla
         var selectedCliente = obtenerClienteSeleccionado();
         if (selectedCliente) {
+            clienteSeleccionado = selectedCliente; // Almacena el cliente seleccionado
             // Llenar los campos de datos del cliente en el formulario principal
-            $("#clienteNombre").val(selectedCliente.representante);
-            $("#clienteEmpresa").val(selectedCliente.empresa);
-            $("#clienteCorreo").val(selectedCliente.correo);
-            $("#clienteTelefono").val(selectedClientetelefono);
-            
+            $("#clienteNombre").val(clienteSeleccionado.representante);
+            $("#clienteEmpresa").val(clienteSeleccionado.empresa);
+            $("#clienteCorreo").val(clienteSeleccionado.correo);
+            $("#clienteTelefono").val(clienteSeleccionado.telefono);
         }
         // Cerrar la ventana modal
         $("#clienteModal").modal('hide');
@@ -24,7 +26,7 @@ $(document).ready(function() {
     // Función para buscar al cliente en tiempo real
     function searchClient(searchText) {
         $.ajax({
-            url: 'buscar_clientes.php', // Ruta a un archivo PHP que realizará la búsqueda en la base de datos
+            url: 'buscar_clientes.php',
             method: 'POST',
             data: { searchText: searchText },
             success: function(data) {
@@ -59,4 +61,31 @@ $(document).ready(function() {
         }
         return null;
     }
+
+    $("#siguiente").click(function() {
+        // Realizar una solicitud AJAX para obtener los datos del cliente desde "clientes.php"
+        $.ajax({
+            type: "GET",
+            url: "principal.php",
+            dataType: "json",
+            success: function(data) {
+                // Llena los datos del cliente en el modal
+                $("#representanteModal").text(data.representante);
+                $("#empresaModal").text(data.empresa);
+                $("#telefonoModal").text(data.telefono);
+                $("#correoModal").text(data.correo);
+    
+                // Muestra la ventana emergente (modal)
+                $("#cotizacionModal").show();
+            },
+          
+        });
+        
+        $(document).ready(function() {
+            $("#siguiente").click(function() {
+                window.location.href = "sproductos.php";
+            });
+        });
+        
+    });
 });

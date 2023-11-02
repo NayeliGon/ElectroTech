@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <?php require '../../includes/_header.php' ?>
@@ -29,70 +30,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <div class="container">
+        <div class="col-sm-6 offset-3 mt-5">
+            <form method="POST">
+                
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Representante *</label>
+                    <input type="text" id="representante" name="representante" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="empresa" class="form-label">Empresa *</label>
+                    <input type="text" id="empresa" name="empresa" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono *</label>
+                    <input type="text" id="telefono" name="telefono" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="corrreo" class="form-label">Correo *</label>
+                    <input type="email" id="correo" name="correo" class="form-control" required>
+                </div>
+                
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarCampos()">Limpiar</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h2 class="text-center">Gestión de Clientes</h2>
-                <form method="POST">
-                    <div class="mb-3">
-                        <label for="representante" class="form-label">Representante *</label>
-                        <input type="text" id="representante" name="representante" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="empresa" class="form-label">Empresa *</label>
-                        <input type="text" id="empresa" name="empresa" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefono" class="form-label">Teléfono *</label>
-                        <input type="text" id="telefono" name="telefono" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="correo" class="form-label">Correo *</label>
-                        <input type="email" id="correo" name="correo" class="form-control" required>
-                    </div>
-                    <div class="mb-3 text-center">
-                        <button type="submit" class="btn btn-success">Guardar</button>
-                        <button type="button" class="btn btn-secondary" onclick="limpiarCampos()">Limpiar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Representante</th>
+                    <th>Empresa</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Consulta para obtener los registros de la tabla "clientes"
+                $sql = "SELECT * FROM clientes";
+                $result = mysqli_query($conexion, $sql);
 
-        <!-- Tabla Bootstrap para mostrar la lista de clientes -->
-        <div class="row mt-5">
-            <div class="col">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Representante</th>
-                            <th>Empresa</th>
-                            <th>Teléfono</th>
-                            <th>Correo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        // Consulta para obtener los registros de la tabla "clientes"
-                        $sql = "SELECT * FROM clientes";
-                        $result = mysqli_query($conexion, $sql);
-
-                        if ($result) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo "<tr>";
-                                echo "<td>" . $row['id'] . "</td>";
-                                echo "<td>" . $row['representante'] . "</td>";
-                                echo "<td>" . $row['empresa'] . "</td>";
-                                echo "<td>" . $row['telefono'] . "</td>";
-                                echo "<td>" . $row['correo'] . "</td>";
-                                echo "</tr>";
-                            }
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>" . $row['id'] . "</td>";
+                        echo "<td>" . $row['representante'] . "</td>";
+                        echo "<td>" . $row['empresa'] . "</td>";
+                        echo "<td>" . $row['telefono'] . "</td>";
+                        echo "<td>" . $row['correo'] . "</td>";
+                        echo "</tr>";
+                    }
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

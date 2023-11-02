@@ -41,7 +41,7 @@ $(document).ready(function() {
                     productosSeleccionados.push(productoSeleccionado);
 
                     // Actualizar la lista de productos seleccionados
-                    $("#productosSeleccionados").append("<li>" + productoSeleccionado.nombre + " - Cantidad: " + cantidad + " - Total: " + total + "</li>");
+                    actualizarListaProductosSeleccionados();
                 });
             },
             error: function() {
@@ -65,10 +65,62 @@ $(document).ready(function() {
         productoSeleccionado.total = total;
     });
 
-    // Manejar clic en el botón "Guardar Selección"
+    // Manejar clic en el botón "Eliminar" de productos seleccionados
+    $("#productosSeleccionados").on("click", "button.eliminarProducto", function() {
+        var productoId = $(this).data("id");
+        productosSeleccionados.splice(productoId, 1); // Elimina el producto del array
+        $(this).closest("li").remove(); // Elimina la entrada de la lista visual
+    });
+
+    // Función para actualizar la lista visual de productos seleccionados
+    function actualizarListaProductosSeleccionados() {
+        $("#productosSeleccionados").empty();
+        for (var i = 0; i < productosSeleccionados.length; i++) {
+            var producto = productosSeleccionados[i];
+            $("#productosSeleccionados").append("<li>" + producto.nombre + " - Cantidad: " + producto.cantidad + " - Total: " + producto.total + " <button class='eliminarProducto' data-id='" + i + "'>Eliminar</button></li>");
+        }
+    }
+
+    // Abrir y llenar la ventana emergente al hacer clic en "Guardar Selección"
     $("#guardarSeleccion").click(function() {
-        // Enviar los productos seleccionados al servidor o realizar acciones necesarias
-        console.log("Productos seleccionados:", productosSeleccionados);
-        // Puedes realizar una solicitud AJAX para guardar estos productos en el servidor si es necesario.
+        var fecha = new Date().toLocaleDateString();
+        var mensaje = "Gracias por su selección. Esperamos su respuesta pronto.";
+        var listaProductos = "";
+        for (var i = 0; i < productosSeleccionados.length; i++) {
+            var producto = productosSeleccionados[i];
+            listaProductos += "<li>" + producto.nombre + " - Cantidad: " + producto.cantidad + " - Total: " + producto.total + "</li>";
+        }
+        $("#fechaCotizacion").text(fecha);
+        $("#productosCotizados").html(listaProductos);
+
+      
+
+        // Muestra la ventana emergente
+        $("#cotizacionModal").show();
+    });
+
+    // Cierra la ventana emergente al hacer clic en la "x"
+    $(".close").click(function() {
+        $("#cotizacionModal").hide();
+    });
+
+    // Código para descargar el contenido del modal como PDF
+    $("#descargarPDF").click(function() {
+        // Crear un nuevo objeto jsPDF
+        var doc = new jsPDF();
+
+        // Capturar el contenido del modal
+        var modalContent = $("#cotizacionModal .modal-content");
+
+        // Convertir el contenido del modal a HTML
+        var htmlContent = modalContent.html();
+
+        // Agregar el contenido al documento PDF
+        doc.fromHTML(htmlContent, 15, 15, {
+            width: 170
+        });
+
+        // Descargar el PDF con un nombre específico
+        doc.save('cotizacion.pdf');
     });
 });
