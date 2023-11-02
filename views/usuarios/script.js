@@ -104,23 +104,5 @@ $(document).ready(function() {
         $("#cotizacionModal").hide();
     });
 
-    // Código para descargar el contenido del modal como PDF
-    $("#descargarPDF").click(function() {
-        // Crear un nuevo objeto jsPDF
-        var doc = new jsPDF();
-
-        // Capturar el contenido del modal
-        var modalContent = $("#cotizacionModal .modal-content");
-
-        // Convertir el contenido del modal a HTML
-        var htmlContent = modalContent.html();
-
-        // Agregar el contenido al documento PDF
-        doc.fromHTML(htmlContent, 15, 15, {
-            width: 170
-        });
-
-        // Descargar el PDF con un nombre específico
-        doc.save('cotizacion.pdf');
-    });
+  
 });

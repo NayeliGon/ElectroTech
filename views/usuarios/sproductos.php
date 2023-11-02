@@ -101,7 +101,7 @@
             <p>Despedida: [Agrega aquí tu despedida]</p>
 
             <!-- Botones para descargar en PDF y enviar por correo -->
-            <button id="descargarPDF" class="btn btn-primary">Descargar en PDF</button>
+           
             <button id="enviarCorreo" class="btn btn-success">Enviar por Correo</button>
         </div>
     </div>
